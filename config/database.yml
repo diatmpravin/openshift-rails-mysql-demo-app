@@ -1,3 +1,6 @@
+
+<% db_service = ENV.fetch("DATABASE_SERVICE_NAME","").upcase %>
+
 # MySQL. Versions 5.0 and up are supported.
 #
 # Install the MySQL driver
@@ -52,5 +55,5 @@ production:
   database: <%= ENV['MYSQL_DB'] %>
   username: <%= ENV['MYSQL_USERNAME'] %>
   password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: <%= ENV[MYSQL_HOST] %>
-  port: <%= ENV[MYSQL_PORT] %>
+  host: <%= ENV["#{db_service}_SERVICE_HOST"] %>
+  port: <%= ENV["#{db_service}_SERVICE_PORT"] %>
