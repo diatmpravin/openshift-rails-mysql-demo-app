@@ -16,13 +16,15 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: root
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: rails_mysql_app_development
+  database: <%= ENV['MYSQL_DB'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_SERVICE_HOST'] %>
+  port: <%= ENV['MYSQL_SERVICE_PORT'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
